@@ -20,7 +20,8 @@ func main() {
 	add := flag.Bool("add",false, "add a new todo")
 	complete := flag.Int("complete", 0, "mark todo as complete")
 	delete := flag.Int("delete", 0, "delete a todo")
-	list := flag.Bool("list", false, "list all todos")
+	list := flag.Bool("list", false, "list all todos")	
+	table := flag.Bool("table", false, "show table of todos")
 	flag.Parse()
 
 	// init todos 
@@ -70,7 +71,10 @@ func main() {
 		}
 
 	case *list:
-		todos.Print()
+		todos.PrintBase()
+
+	case *table:
+		todos.Table()
 
 	default:
 		fmt.Fprintln(os.Stdout, "invalid command")
